@@ -54,6 +54,7 @@ readers()
         data["pdb"]=readPDB;
         data["pda"]=readPDA;
         data["ptc"]=readPTC;
+        data["prt"]=readPRT;
     }
     return data;
 }
@@ -69,6 +70,7 @@ writers()
         data["pdb"]=writePDB;
         data["pda"]=writePDA;
         data["ptc"]=writePTC;
+        data["prt"]=writePRT;
     }
     return data;
 }
