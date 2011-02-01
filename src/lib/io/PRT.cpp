@@ -43,7 +43,12 @@ static unsigned char signature[32] = {
     };
 
 #ifndef USE_ILMHALF
-static unsigned int half2float[] = {
+union f_ui {
+    unsigned int ui;
+    float f;
+};
+
+static f_ui half2float[65536] = {
 #include "half2float.h"
 };
 #endif
@@ -257,7 +262,7 @@ ParticlesDataMutable* readPRT(const char* filename,const bool headersOnly)
 #else
                             unsigned short val;
                             read_buffer(*input, z, (char*)in_buf, &val, sizeof(val)); 
-                            fval = *((float*)(&half2float[val]));
+                            fval = half2float[val].f;
 #endif	
                         }
                         break;
