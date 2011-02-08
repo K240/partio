@@ -309,7 +309,7 @@ bool writePRT(const char* filename,const ParticlesData& p,const bool /*compresse
     header.headersize = 0x38;
     header.version = 1;
     header.numParticles = p.numParticles();
-    int reserve = 0;
+    int reserve = 4;
     output->write((char*)&header,sizeof(FileHeadder));
     write<LITEND>(*output, reserve);
     write<LITEND>(*output, (int)p.numAttributes());
